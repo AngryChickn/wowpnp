@@ -1,0 +1,7 @@
+<h1>Charakter erstellen</h1>
+
+
+<%= form_for @character, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+ 	<label>Name: <%= f.text_field :name %></label>
+  <br><%= f.submit "Erstellen" %>
+<% end %>
