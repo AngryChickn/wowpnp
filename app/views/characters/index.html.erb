@@ -1,11 +1,10 @@
 <% @characters = Character.all  %>
 
-<h1>Characters</h1>
+<h1>Charaktere</h1>
+<%= link_to 'Neu', new_character_path %>
 
 <ul>
   <% @characters.each do |character| %>
-    <li>Name: <%=character.name %></li>
+    <li>Name: <%=character.name %> | <%= link_to 'Ansicht', character %></li>
   <% end %>
 </ul>
-
-<%= link_to 'Neu', new_character_path %>

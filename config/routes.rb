@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'characters/show'
+
   post 'characters/create'
 
   get 'characters/new'

@@ -3,17 +3,18 @@ class CharactersController < ApplicationController
   end
 
   def new
-  	@character = Character.new
+    @character = Character.new
   end
 
   def create
     @character = Character.new(character_params)
     if @character.save
       redirect_to @character
-    #else
-      # This line overrides the default rendering behavior, which
-      # would have been to render the "create" view.
-     # render "new"
+    else
+      render "new"
+    end
+
+    def show
     end
   end
 

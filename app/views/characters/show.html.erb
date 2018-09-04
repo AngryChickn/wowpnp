@@ -1,0 +1,5 @@
+<% @character = Character.find(params[:id])  %>
+
+<h1><%= @character.name %></h1>
+
+<%= link_to 'Zurück', characters_path %>
