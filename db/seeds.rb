@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+race_list = [
+  [ 'Mensch' ],
+  [ 'Zwerg' ],
+  [ 'Nachtelf' ],
+  [ 'Gnom' ],
+  [ 'Orc' ],
+  [ 'Troll' ],
+  [ 'Taure' ],
+  [ 'Untoter' ],
+]
+
+race_list.each do |name|
+  Race.create( name: name )
+end
+
