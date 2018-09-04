@@ -1,0 +1,9 @@
+<% @characters = Character.all  %>
+
+<h1>Characters</h1>
+
+<ul>
+  <% @characters.each do |character| %>
+    <li>Name: <%=character.name %></li>
+  <% end %>
+</ul>
