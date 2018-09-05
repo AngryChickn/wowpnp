@@ -1,6 +1,7 @@
 <% @character = Character.find(params[:id])  %>
 
 <h1><%= @character.name %></h1>
-Rasse: <%= @character.race.name %>
+<br>Rasse: <%= @character.race.name %>
+<br>Klasse: <%= @character.klass.name %>
 
 <br><%= link_to 'Zurück', characters_path %>

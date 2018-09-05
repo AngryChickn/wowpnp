@@ -11,17 +11,22 @@ race_list = [
   'Zwerg',
   'Nachtelf',
   'Gnom',
-  'Orc',
+  'Ork',
   'Troll',
   'Taure',
   'Untoter',
 ]
 
 klass_list = [
-  'Magier',
-  'Priester',
   'Krieger',
+  'Paladin', 
+  'Jäger',
+  'Schamane',
+  'Druide',
+  'Schurke',
+  'Magier',
   'Hexenmeister',
+  'Priester',
 ]
 
 Race.all.each do |race|
@@ -36,5 +41,6 @@ Klass.all.each do |klass|
   klass.destroy!
 end
 
-klass.each do |name|
+klass_list.each do |name|
   Klass.create name: name
+end

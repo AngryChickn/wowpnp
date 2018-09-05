@@ -6,5 +6,6 @@
 <%= form_for @character, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
  	<label>Name: <%= f.text_field :name %></label>
   <br>Rasse: <%= f.collection_select :race_id, Race.order(:id),:id, :name %>
+  <br>Klasse: <%= f.collection_select :klass_id, Klass.order(:id),:id, :name %>
   <br><%= f.submit "Erstellen" %>
 <% end %>
