@@ -6,8 +6,24 @@ class Character < ApplicationRecord
   validates :level, :strength, :agility, :intellect, :cunning, :willpower, :presence,
             :hitpoints, :stamina, :mana, :armor, :resistence, presence: true
 
+  def initMods
+    klass_mod = getInitKlassMod     
+    self.hitpoints = 10 + (klass_mod[:hitpoints] || 0)
+    self.stamina = 10 + (klass_mod[:stamina] || 0)
+    self.mana = 10 + (klass_mod[:mana] || 0)
+    self.armor = 0
+    self.resistence = 0
+
+    self.strength = 1 + (klass_mod[:strength] || 0)
+    self.agility = 1 + (klass_mod[:agility] || 0)
+    self.intellect = 1 + (klass_mod[:intellect] || 0)
+    self.cunning = 1 + (klass_mod[:cunning] || 0)
+    self.willpower = 1 + (klass_mod[:willpower] || 0)
+    self.presence = 1 + (klass_mod[:presence] || 0)
+  end
+
   def getInitKlassMod
-    # TODO: better mapping
+    # TODO: Refactor
     case klass.name
     when 'Krieger'
       return { hitpoints: 5, stamina: 3, strengh: 1 }
