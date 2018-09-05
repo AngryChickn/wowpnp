@@ -10,6 +10,13 @@ class CharactersController < ApplicationController
     @character = Character.new(character_params)
     # TODO: Move to Character-class
     @character.level = 1
+
+    @character.hitpoints = 10
+    @character.stamina = 10
+    @character.mana = 10
+    @character.armor = 0
+    @character.resistence = 0
+
     @character.strength = 1
     @character.agility = 1
     @character.intellect = 1
@@ -29,7 +36,6 @@ class CharactersController < ApplicationController
   end
 
   def character_params
-    params.require(:character).permit(:klass_id, :level, :name, :race_id, :strength, :agility, :intellect,
-      :cunning, :willpower, :presence)
+    params.require(:character).permit(:klass_id, :name, :race_id)
   end
 end
