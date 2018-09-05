@@ -8,17 +8,19 @@ class CharactersController < ApplicationController
 
   def create
     @character = Character.new(character_params)
+    @character.level = 1 # TODO: Move to Character-class
     if @character.save
       redirect_to @character
     else
       render "new"
     end
 
-    def show
-    end
+  end
+
+  def show
   end
 
   def character_params
-    params.require(:character).permit(:name, :race_id)
+    params.require(:character).permit(:klass_id, :level, :name, :race_id)
   end
 end
