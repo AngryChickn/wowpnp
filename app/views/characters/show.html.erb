@@ -3,5 +3,13 @@
 <h1><%= @character.name %></h1>
 <br>Rasse: <%= @character.race.name %>
 <br>Klasse: <%= @character.klass.name %>
-
+<br>Level: <%= @character.level %>
+<br>
+<br>Stärke: <%= @character.strength %>
+<br>Beweglichkeit: <%= @character.agility %>
+<br>Intelligenz: <%= @character.intellect %>
+<br>Täuschung: <%= @character.cunning %>
+<br>Willenskraft: <%= @character.willpower %>
+<br>Ausstrahlung: <%= @character.presence %>
+<br>
 <br><%= link_to 'Zurück', characters_path %>
