@@ -14,11 +14,12 @@ class CharactersController < ApplicationController
       render "new"
     end
 
-    def show
-    end
+  end
+  
+  def show
   end
 
   def character_params
-    params.require(:character).permit(:name, :race_id)
+    params.require(:character).permit(:name, :klass_id, :race_id)
   end
 end
