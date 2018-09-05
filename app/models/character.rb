@@ -40,7 +40,7 @@ class Character < ApplicationRecord
     when 'Schamane'
       return { hitpoints: 2, stamina: 3, mana: 13, agility: 1, intellect: 1 }
     when 'Druide'
-      return { hitpoints: 3, stamina: 2, mana: 13, willpower: 1, presence: 1 }
+      return { hitpoints: 3, stamina: 2, mana: 12, willpower: 1, presence: 1, resistence: 1 }
     when 'Schurke'
       return { hitpoints: 2, stamina: 6, agility: 1, cunning: 1 }
     when 'Hexenmeister'
