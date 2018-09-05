@@ -1,6 +1,7 @@
 class Character < ApplicationRecord
-	has_one :race
+	belongs_to :race
 	has_many :skills
 	validates :name, presence: true,
 		length: { minimum: 2 }
+  validates :level, presence: true
 end

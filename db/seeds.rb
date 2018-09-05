@@ -7,15 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 race_list = [
-  [ 'Mensch' ],
-  [ 'Zwerg' ],
-  [ 'Nachtelf' ],
-  [ 'Gnom' ],
-  [ 'Orc' ],
-  [ 'Troll' ],
-  [ 'Taure' ],
-  [ 'Untoter' ],
+  'Mensch',
+  'Zwerg',
+  'Nachtelf',
+  'Gnom',
+  'Orc',
+  'Troll',
+  'Taure',
+  'Untoter',
 ]
+
+Race.all.each do |race|
+  race.destroy!
+end
 
 race_list.each do |name|
   Race.create( name: name )
