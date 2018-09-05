@@ -17,11 +17,24 @@ race_list = [
   'Untoter',
 ]
 
+klass_list = [
+  'Magier',
+  'Priester',
+  'Krieger',
+  'Hexenmeister',
+]
+
 Race.all.each do |race|
   race.destroy!
 end
 
 race_list.each do |name|
-  Race.create( name: name )
+  Race.create name: name
 end
 
+Klass.all.each do |klass|
+  klass.destroy!
+end
+
+klass.each do |name|
+  Klass.create name: name
