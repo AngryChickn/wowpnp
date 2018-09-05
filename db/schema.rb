@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180905163818) do
+ActiveRecord::Schema.define(version: 20180905192138) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 20180905163818) do
     t.datetime "updated_at", null: false
     t.integer "race_id"
     t.integer "klass_id"
+    t.integer "strength"
+    t.integer "agility"
+    t.integer "intellect"
+    t.integer "cunning"
+    t.integer "willpower"
+    t.integer "presence"
+    t.integer "hitpoints"
+    t.integer "stamina"
+    t.integer "mana"
+    t.integer "armor"
+    t.integer "resistence"
   end
 
   create_table "items", force: :cascade do |t|

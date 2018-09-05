@@ -5,6 +5,6 @@
 
 <ul>
   <% @characters.each do |character| %>
-    <li>Name: <%=character.name %> | <%= link_to 'Ansicht', character %></li>
+    <li><%= link_to character.name, character %></li>
   <% end %>
 </ul>
