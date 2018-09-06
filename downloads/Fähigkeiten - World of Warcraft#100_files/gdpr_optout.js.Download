@@ -1,0 +1,58 @@
+function optOut() {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].split("=");
+        deleteCookie(cookie[0]);
+    }
+    localStorage.clear();
+    let copy = document.getElementById("gdpr-dashboard");
+    copy.classList.add("collapsed");
+    let elem = document.getElementById("gdpr-toggle");
+    elem.classList.remove("open");
+    localStorage.setItem('optIn', JSON.stringify(false));
+}
+function deleteCookie(cookiename) {
+    var d = new Date();
+    d.setDate(d.getDate() - 1);
+    var expires = ";expires=" + d;
+    var name = cookiename;
+    var value = "";
+    document.cookie = name + "=" + value + expires + "; path=/acc/html";
+}
+
+function optIn() {
+    let copy = document.getElementById("gdpr-dashboard");
+    copy.classList.add("collapsed");
+    let elem = document.getElementById("gdpr-toggle");
+    elem.classList.remove("open");
+    localStorage.setItem('optIn', JSON.stringify(true));
+}
+
+function gdprSettings() {
+    let elem = document.getElementById("gdpr-toggle");
+    let copy = document.getElementById("gdpr-dashboard");
+    elem.classList.add("open");
+    copy.classList.remove("collapsed");
+}
+if (localStorage.getItem("optIn") === "false") {
+    document.__defineGetter__("cookie", function() {
+        return '';
+    });
+    document.__defineSetter__("cookie", function() {});
+}
+let hook = document.querySelector('#gdpr-script');
+hook.innerHTML = hook.innerHTML + `<div class="gdpr-module"><button id="gdpr-toggle" class="gdpr-button">Cookie Settings</button><div id="gdpr-dashboard" class="gdpr-dashboard">
+<p>We may use cookies to personalize content and ads, provide social media features or to analyze our site traffic. We may also share information about your use of the site with our social media, advertising and analytics partners. Please note if you are using an adblocker we will be unable to save a cookie with your preference and you will continue to see this popup every time you visit the site. For more information, visit our <a href="https://corp.zam.com/legal/terms" target="_bank">Terms of Service</a> and the <a href="https://corp.zam.com/legal/privacy" target="_blank">Privacy Policy</a>.</p>
+<div class="gdpr-actions">
+	<button class="gdpr-decline" type="button" id="OptOut">Opt out</button>
+	<button class="gdpr-accept" type="button" id="OptIn">Got it!</button>
+</div>
+</div></div>`;
+
+if (localStorage.getItem('optIn')) {
+    let elem = document.getElementById("gdpr-dashboard");
+    elem.classList.add("collapsed");
+}
+document.getElementById("gdpr-toggle").onclick = gdprSettings;
+document.getElementById("OptIn").onclick = optIn;
+document.getElementById("OptOut").onclick = optOut;
