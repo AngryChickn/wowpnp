@@ -11,12 +11,16 @@ class Character < ApplicationRecord
     klass_mod = getInitKlassMod
     race_mod = getInitRaceMod
 
+    # Resources
     self.hitpoints = 10 + (klass_mod[:hitpoints] || 0) + (race_mod[:hitpoints] || 0)
     self.stamina = 10 + (klass_mod[:stamina] || 0) + (race_mod[:stamina] || 0)
     self.mana = 0 + (klass_mod[:mana] || 0) + (race_mod[:mana] || 0)
+    
+    # Defense
     self.armor = 0
     self.resistence = 0 + (klass_mod[:resistence] || 0) + (race_mod[:resistence] || 0)
 
+    # Attributes
     self.strength = 1 + (klass_mod[:strength] || 0) + (race_mod[:strength] || 0)
     self.agility = 1 + (klass_mod[:agility] || 0) + (race_mod[:agility] || 0)
     self.intellect = 1 + (klass_mod[:intellect] || 0) + (race_mod[:intellect] || 0)
