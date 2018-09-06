@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180906182247) do
     t.integer "resistence"
   end
 
-  create_table "characters_skills", id: false, force: :cascade do |t|
+  create_table "characters_skills", force: :cascade do |t|
     t.integer "character_id", null: false
     t.integer "skill_id", null: false
     t.integer "level", default: 0
