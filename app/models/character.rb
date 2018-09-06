@@ -7,6 +7,14 @@ class Character < ApplicationRecord
   validates :level, :strength, :agility, :intellect, :cunning, :willpower, :presence,
             :hitpoints, :stamina, :mana, :armor, :resistence, presence: true
 
+  # TODO: Refactor to constructor
+  def init
+    initMods
+    initSkills
+  end
+
+  private
+
   def initMods
     klass_mod = getInitKlassMod
     race_mod = getInitRaceMod
@@ -27,6 +35,39 @@ class Character < ApplicationRecord
     self.cunning = 1 + (klass_mod[:cunning] || 0) + (race_mod[:cunning] || 0)
     self.willpower = 1 + (klass_mod[:willpower] || 0) + (race_mod[:willpower] || 0)
     self.presence = 1 + (klass_mod[:presence] || 0) + (race_mod[:presence] || 0)
+  end
+
+  def initSkills
+    self.skills << getInitCommonSkills << getInitKlassSkills
+  end
+
+  def getInitCommonSkills
+    # common = 0
+    Skill.where(skill_type: 0)
+  end
+
+  def getInitKlassSkills
+    # TODO: Refactor
+    case klass.name
+    when 'Krieger'
+      return []
+    when 'Paladin'
+      return []
+    when 'Jäger'
+      return []
+    when 'Schamane'
+      return []
+    when 'Druide'
+      return []
+    when 'Schurke'
+      return []
+    when 'Hexenmeister'
+      return []
+    when 'Magier'
+      return []
+    when 'Priester'
+      return []
+    end
   end
 
   # returns a hash of modifiers for an attribute
