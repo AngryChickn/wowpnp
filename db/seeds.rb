@@ -118,7 +118,7 @@ skill_list.each do |skill|
   Skill.create name: skill[0], description: skill[1], bound_attribute: skill[2], skill_type: skill[3]
 end
 
-
+=begin
 
 Adlerauge
 Arkan 
@@ -1044,3 +1044,4 @@ Schloss knacken
 24  
 Physisch  
 Schurke
+=end
