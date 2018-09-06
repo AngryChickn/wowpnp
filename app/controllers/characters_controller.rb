@@ -8,7 +8,7 @@ class CharactersController < ApplicationController
 
   def create
     @character = Character.new(character_params.merge({level: 1}))
-    @character.initMods
+    @character.init
 
     if @character.save
       redirect_to @character
