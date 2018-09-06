@@ -13,6 +13,20 @@ class Character < ApplicationRecord
     initSkills
   end
 
+  def calcDices(skill)
+    green_count = self[skill.bound_attribute]
+    yellow_count = 0
+    level = CharactersSkills.where(character_id: self.id, skill_id: skill.id).first.level
+    if level > 0
+      while green_count >= 0 && level > 0 do
+        green_count -= 1
+        level -= 1
+        yellow_count += 1
+      end
+    end
+    [green_count, yellow_count]
+  end
+
   private
 
   def initMods

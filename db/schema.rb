@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906170556) do
+ActiveRecord::Schema.define(version: 20180906182247) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20180906170556) do
   create_table "characters_skills", id: false, force: :cascade do |t|
     t.integer "character_id", null: false
     t.integer "skill_id", null: false
-    t.integer "level"
+    t.integer "level", default: 0
     t.index ["character_id", "skill_id"], name: "index_characters_skills_on_character_id_and_skill_id"
     t.index ["skill_id", "character_id"], name: "index_characters_skills_on_skill_id_and_character_id"
   end
