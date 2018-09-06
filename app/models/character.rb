@@ -1,6 +1,7 @@
 class Character < ApplicationRecord
   belongs_to :race
   belongs_to :klass
+  has_and_belongs_to_many :skills
 	validates :name, presence: true,
 		length: { minimum: 2 }
   validates :level, :strength, :agility, :intellect, :cunning, :willpower, :presence,
