@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906182247) do
+ActiveRecord::Schema.define(version: 20180907071617) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180906182247) do
     t.datetime "updated_at", null: false
     t.integer "bound_attribute"
     t.integer "skill_type"
+    t.integer "klass_id"
   end
 
 end

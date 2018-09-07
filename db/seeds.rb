@@ -1,35 +1,67 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+###
+# spell_list:
 #
-# Examples:
+# name | description | bound_attribute | klass_id
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#
+# enum bound_attribute: 
+#
+# strength | agility | intellect | cunning | willpower | presence
+#
+###
 
 spells_list = [
-  ['Blocken', 'Passiv', 0, 2], # Krieger # TODO: Passive enum skill_type
+  ['Blocken', 'Passiv', 0, 1], # Krieger # TODO: Passive enum skill_type and move to own list
+  ['Parieren', 'Passiv', 0, 1],
+  ['Schlachtruf', 'Zauber', 5, 1],
+  ['Spott', 'Zauber', 5, 1],
+  ['Sturmangriff', 'Zauber', 0, 1],
+  ['Tiefe Wunden', 'Zauber', 0, 1],
+  ['Blocken', 'Passiv', 0, 2], # Paladin
   ['Parieren', 'Passiv', 0, 2],
-  ['Schlachtruf', 'Zauber', 0, 2],
-  ['Spott', 'Zauber', 0, 2],
-  ['Sturmangriff', 'Zauber', 0, 2],
-  ['Tiefe Wunden', 'Zauber', 0, 2],
-  ['Blocken', 'Passiv', 1, 2], # Paladin
-  ['Parieren', 'Passiv', 1, 2],
-  ['Erlösung', 'Zauber', 1, 2],
-  ['Gottesschild', 'Zauber', 1, 2],
-  ['Grenzenloser Glaube', 'Zauber', 1, 2],
-  ['Hand der Abrechnung', 'Zauber', 1, 2],
-  ['Handauflegung', 'Zauber', 1, 2],
-  ['Herz des Kreuzfahrers', 'Zauber', 1, 2],
-  ['Kreuzfahrerstoß', 'Zauber', 1, 2],
-  ['Nachsinnen', 'Zauber', 1, 2],
-  ['Segen der Freiheit', 'Zauber', 1, 2],
-  ['Tyrs Errettung', 'Zauber', 1, 2],
-  ['Arkane Intelligenz', 'Zauber', 6, 2], # Magier
-  ['Blinzeln', 'Zauber', 6, 2],
-  ['Blinzeln', 'Zauber', 6, 2],
-  ['Blinzeln', 'Zauber', 6, 2],
-  ['Blinzeln', 'Zauber', 6, 2],
+  ['Erlösung', 'Zauber', 2, 2],
+  ['Gottesschild', 'Zauber', 2, 2],
+  ['Grenzenloser Glaube', 'Zauber', 2, 2],
+  ['Hand der Abrechnung', 'Zauber', 2, 2],
+  ['Handauflegung', 'Zauber', 2, 2],
+  ['Hammer der Gerechtigkeit', 'Zauber', 2, 2],
+  ['Kreuzfahrerstoß', 'Zauber', 2, 2],
+  ['Nachsinnen', 'Zauber', 2, 2],
+  ['Segen der Freiheit', 'Zauber', 2, 2],
+  ['Tyrs Errettung', 'Zauber', 2, 2],
+  ['Arkane Intelligenz', 'Zauber', 2, 7], # Magier
+  ['Erfrischungen herbeizaubern', 'Zauber', 2, 7],
+  ['Fluch aufheben', 'Zauber', 2, 7],
+  ['Verwandlung', 'Zauber', 2, 7],
+  ['Blinzeln', 'Zauber', 2, 7],
+  ['Arkane Geschosse', 'Zauber', 2, 7],
+  ['Feuerball', 'Zauber', 2, 7],
+  ['Pyroschlag', 'Zauber', 2, 7],
+  ['Frotzblitz', 'Zauber', 2, 7],
+  ['Frostrüstung', 'Zauber', 2, 7],
+  ['Feuerschlag', 'Zauber', 2, 7],
+  ['Frostnova', 'Zauber', 2, 7],
+  ['Blizzard', 'Zauber', 2, 7],
+  ['Teleport: Stormwind', 'Zauber', 2, 7],
+  ['Teleport: Ogrimmar', 'Zauber', 2, 7],
+  ['Auge von Kilrogg', 'Zauber', 2, 8], # Hexenmeister
+  ['Dämonensklave', 'Zauber', 2, 8],
+  ['Furcht', 'Zauber', 2, 8],
+  ['Gesundheitsstein herstellen', 'Zauber', 2, 8],
+  ['Lebenslinie', 'Zauber', 2, 8],
+  ['Leerwandler beschwören', 'Zauber', 2, 8],
+  ['Erbarmungslose Entschlossenheit', 'Zauber', 2, 8],
+  ['Ritual der Beschwörung', 'Zauber', 2, 8],
+  ['Seele entziehen', 'Zauber', 2, 8],
+  ['Seelenstein', 'Zauber', 2, 8],
+  ['Sukkubus beschwören', 'Zauber', 2, 8],
+  ['Teufelsjäger beschwören', 'Zauber', 2, 8],
+  ['Verbannen', 'Zauber', 2, 8],
+  ['Wichtel beschwören', 'Zauber', 2, 8],
+  ['Schattenblitz', 'Zauber', 2, 8],
+  ['Feuerbrand', 'Zauber', 2, 8],
+  ['Verderbnis', 'Zauber', 2, 8],
+  ['Lebensraub', 'Zauber', 2, 8],
 ]
 
 race_list = [
@@ -56,42 +88,37 @@ klass_list = [
 ]
 
 ###
-# skill_list:
+# skill_list: (common)
 #
-# name | description | bound_attribute | skill_type
+# name | description | bound_attribute 
 #
 #
 # enum bound_attribute: 
 #
 # strength | agility | intellect | cunning | willpower | presence
 #
-#
-# enum skill_type
-#
-# common | weapon | spell | ultimate | profession
-#
 ###
 
 skill_list = [
-  ['Athletik', 'Description', 0, 0],
-  ['Sternenkunde', 'Description', 2, 0],
-  ['Charme', 'Description', 5, 0],
-  ['Mechanik', 'Description', 2, 0],
-  ['Disziplin', 'Description', 4, 0],
-  ['Einschüchterung', 'Description', 4, 0],
-  ['Führungsqualität', 'Description', 5, 0],
-  ['Heimlichkeit', 'Description', 3, 0],
-  ['Körperbeherrschung', 'Description', 1, 0],
-  ['Medizin', 'Description', 2, 0],
-  ['Pilot', 'Description', 1, 0],
-  ['Straßenwissen', 'Description', 3, 0],
-  ['Täuschung', 'Description', 3, 0],
-  ['Überleben', 'Description', 3, 0],
-  ['Verhandeln', 'Description', 5, 0],
-  ['Wachsamkeit', 'Description', 4, 0],
-  ['Wahrnehmung', 'Description', 3, 0],
-  ['Widerstandskraft', 'Description', 0, 0],
-  ['Wissen', 'Description', 2, 0],
+  ['Athletik', 'Description', 0],
+  ['Sternenkunde', 'Description', 2],
+  ['Charme', 'Description', 5],
+  ['Mechanik', 'Description', 2],
+  ['Disziplin', 'Description', 4],
+  ['Einschüchterung', 'Description', 4],
+  ['Führungsqualität', 'Description', 5],
+  ['Heimlichkeit', 'Description', 3],
+  ['Körperbeherrschung', 'Description', 1],
+  ['Medizin', 'Description', 2],
+  ['Pilot', 'Description', 1],
+  ['Straßenwissen', 'Description', 3],
+  ['Täuschung', 'Description', 3],
+  ['Überleben', 'Description', 3],
+  ['Verhandeln', 'Description', 5],
+  ['Wachsamkeit', 'Description', 4],
+  ['Wahrnehmung', 'Description', 3],
+  ['Widerstandskraft', 'Description', 0],
+  ['Wissen', 'Description', 2],
 ]
 
 Race.all.each do |race|
@@ -115,7 +142,11 @@ Skill.all.each do |skill|
 end
 
 skill_list.each do |skill|
-  Skill.create name: skill[0], description: skill[1], bound_attribute: skill[2], skill_type: skill[3]
+  Skill.create name: skill[0], description: skill[1], bound_attribute: skill[2], skill_type: 0
+end
+
+spells_list.each do |spell|
+  Skill.create name: spell[0], description: spell[1], bound_attribute: spell[2], skill_type: 2, klass_id: spell[3]
 end
 
 =begin
@@ -163,11 +194,7 @@ Priester
 Aufwachen
 Physisch  
 Jäger
-    
-Auge von Kilrogg
-Schatten  
-Hexenmeister
-    
+        
 Bärengestalt
 Gestaltwandel
 Physisch  
@@ -220,34 +247,14 @@ Blutrote Phiole
 Natur 
 Schurke
     
-Dämon kommandieren
-Physisch  
-Hexenmeister
-    
-Dämon kontrollieren
-Passiv
-Physisch  
-Hexenmeister
-    
 Dämonen aufspüren
 Physisch  
 Jäger
     
-Dämonensklave
-Schatten  
-Hexenmeister
-    
-Dämonisches Tor
-Schatten  
-Hexenmeister
     
 Drachkin aufspüren
 Physisch  
 Jäger
-    
-Eisblock
-Frost 
-Magier
     
 Draenei, Lichtgeschmiedeter DraeneiElekk des Exarchen beschwören
 Beschwörung
@@ -257,15 +264,7 @@ Elementare aufspüren
 Physisch  
 Jäger
     
-Erbarmungslose Entschlossenheit
-Schatten  
-Hexenmeister
     
-Erfrischungen herbeizaubern
-Arkan 
-Magier
-    
-
     
 Fallen entdecken
 Passiv
@@ -293,7 +292,7 @@ Passiv
 Physisch  
 Schurke
     
-Fluch aufheben
+
 Arkan 
 Magier
     
@@ -318,10 +317,7 @@ Frostnova
 Frost 
 Magier
     
-Furcht
-Schatten  
-Hexenmeister
-    
+ 
 Gedankenkontrolle
 Schatten  
 Priester
@@ -337,10 +333,6 @@ Schamane
 Geisterwolf
 Natur 
 Schamane
-    
-Gesundheitsstein herstellen
-Schatten  
-Hexenmeister
     
     
 Draenei, Lichtgeschmiedeter DraeneiGroßen Elekk des Exarchen beschwören
@@ -439,14 +431,7 @@ Langsamer Fall
 Arkan 
 Magier
     
-Lebenslinie
-Schatten  
-Hexenmeister
-    
-Leerwandler beschwören
-Beschwörung
-Schatten  
-Hexenmeister
+   
     
 Leuchtfeuer
 Arkan 
@@ -506,10 +491,7 @@ Magier
 Portal: Dalaran - Nordend
 Arkan 
 Magier
-    
-Nachtelf, WorgenPortal: Darnassus
-Arkan 
-Magier
+
     
 Portal: Dazar'alor
 Arkan 
@@ -578,10 +560,7 @@ Magier
 Portal: Tol Barad
 Arkan 
 Magier
-    
-UntotPortal: Unterstadt
-Arkan 
-Magier
+
     
 Reinigen
 Natur 
@@ -601,9 +580,6 @@ Riesen aufspüren
 Physisch  
 Jäger
     
-Ritual der Beschwörung
-Schatten  
-Hexenmeister
     
 Mensch, ZwergSchlachtross beschwören
 Beschwörung
@@ -621,26 +597,7 @@ Druide
 Schurkenhandel
 Physisch  
 Schurke
-    
-Seele entziehen
-Physisch  
-Hexenmeister
-    
-Seelenbrunnen erschaffen
-Schatten  
-Hexenmeister
-    
-Seelensplitter
-Physisch  
-Hexenmeister
-    
-Seelensplitter
-Physisch  
-Hexenmeister
-    
-Seelenstein
-Schatten  
-Hexenmeister
+
     
 
 Sicheres Fallen
@@ -669,14 +626,6 @@ Heilig
     
 
     
-Sukkubus beschwören
-Beschwörung
-Schatten  
-Hexenmeister
-    
-Teleport: Boralus
-Arkan 
-Magier
     
 Teleport: Dalaran - Nordend
 Arkan 
@@ -775,10 +724,6 @@ Einfacher Angriff
 Feuer 
 Teufelswichtel
     
-Teufelsjäger beschwören
-Beschwörung
-Schatten  
-Hexenmeister
     
 Teufelsross
 Beschwörung
@@ -856,9 +801,6 @@ Uraltes Wissen der Zandalari
 Natur 
 Jäger
     
-Verbannen
-Schatten  
-Hexenmeister
     
 Verblassen
 Schatten  
@@ -904,7 +846,7 @@ Verhüllender Nebel
 Physisch  
 Schurke
     
-Verwandlung
+
 Truthahn
 Arkan 
 Magier
@@ -977,10 +919,6 @@ Wasserwandeln
 Natur 
 Schamane
     
-Wichtel beschwören
-Beschwörung
-Schatten  
-Hexenmeister
     
 
 Wiederbeleben

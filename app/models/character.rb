@@ -13,6 +13,7 @@ class Character < ApplicationRecord
     initSkills
   end
 
+  # returns an Array of green and yellow dice count
   def calcDices(skill)
     green_count = self[skill.bound_attribute]
     yellow_count = 0
@@ -62,26 +63,7 @@ class Character < ApplicationRecord
 
   def getInitKlassSkills
     # TODO: Refactor
-    case klass.name
-    when 'Krieger'
-      return []
-    when 'Paladin'
-      return []
-    when 'Jäger'
-      return []
-    when 'Schamane'
-      return []
-    when 'Druide'
-      return []
-    when 'Schurke'
-      return []
-    when 'Hexenmeister'
-      return []
-    when 'Magier'
-      return []
-    when 'Priester'
-      return []
-    end
+    [] << Skill.where(klass_id: klass.id)
   end
 
   # returns a hash of modifiers for an attribute
