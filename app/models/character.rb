@@ -63,8 +63,7 @@ class Character < ApplicationRecord
   end
 
   def getInitKlassSkills
-    # TODO: Refactor
-    [] << Skill.where(klass_id: klass.id)
+    Skill.where(klass_id: klass.id)
   end
 
   # returns a hash of modifiers for an attribute
