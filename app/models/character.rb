@@ -53,7 +53,8 @@ class Character < ApplicationRecord
   end
 
   def initSkills
-    self.skills << getInitCommonSkills << getInitKlassSkills
+    self.skills << getInitCommonSkills
+    self.skills << getInitKlassSkills
   end
 
   def getInitCommonSkills
