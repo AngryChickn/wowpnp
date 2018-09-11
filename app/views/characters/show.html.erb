@@ -24,6 +24,12 @@
 <br>
 <br><h2>Fertigkeiten</h2>
 <% @character.skills.each do |skill| %>
-<% dices = @character.calcDices skill %>
-<br><%= skill.name %> | Grün: <%= dices[0] %> | Gelb: <%= dices[1] %>
+  <% dices = @character.calcDices skill %>
+  <br><%= skill.name %> | 
+  <% dices[0].times do %> 
+    <span style="color: green">◆</span>
+  <% end %> |
+  <% dices[1].times do %> 
+    <span style="color: yellow">◆</span>
+  <% end %>
 <% end %>
