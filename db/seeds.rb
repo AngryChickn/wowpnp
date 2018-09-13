@@ -1,3 +1,5 @@
+puts 'Start Seeding...'
+
 ###
 # spell_list:
 #
@@ -100,53 +102,61 @@ klass_list = [
 ###
 
 skill_list = [
-  ['Athletik', 'Description', 0],
-  ['Sternenkunde', 'Description', 2],
-  ['Charme', 'Description', 5],
-  ['Mechanik', 'Description', 2],
-  ['Disziplin', 'Description', 4],
-  ['Einschüchterung', 'Description', 4],
-  ['Führungsqualität', 'Description', 5],
-  ['Heimlichkeit', 'Description', 3],
-  ['Körperbeherrschung', 'Description', 1],
-  ['Medizin', 'Description', 2],
-  ['Pilot', 'Description', 1],
-  ['Straßenwissen', 'Description', 3],
-  ['Täuschung', 'Description', 3],
-  ['Überleben', 'Description', 3],
-  ['Verhandeln', 'Description', 5],
-  ['Wachsamkeit', 'Description', 4],
-  ['Wahrnehmung', 'Description', 3],
-  ['Widerstandskraft', 'Description', 0],
-  ['Wissen', 'Description', 2],
+  ['Athletik', '#MISSING_FIELD#', 0],
+  ['Sternenkunde', '#MISSING_FIELD#', 2],
+  ['Charme', '#MISSING_FIELD#', 5],
+  ['Mechanik', '#MISSING_FIELD#', 2],
+  ['Disziplin', '#MISSING_FIELD#', 4],
+  ['Einschüchterung', '#MISSING_FIELD#', 4],
+  ['Führungsqualität', '#MISSING_FIELD#', 5],
+  ['Heimlichkeit', '#MISSING_FIELD#', 3],
+  ['Körperbeherrschung', '#MISSING_FIELD#', 1],
+  ['Medizin', '#MISSING_FIELD#', 2],
+  ['Pilot', '#MISSING_FIELD#', 1],
+  ['Straßenwissen', '#MISSING_FIELD#', 3],
+  ['Täuschung', '#MISSING_FIELD#', 3],
+  ['Überleben', '#MISSING_FIELD#', 3],
+  ['Verhandeln', '#MISSING_FIELD#', 5],
+  ['Wachsamkeit', '#MISSING_FIELD#', 4],
+  ['Wahrnehmung', '#MISSING_FIELD#', 3],
+  ['Widerstandskraft', '#MISSING_FIELD#', 0],
+  ['Wissen', '#MISSING_FIELD#', 2],
 ]
 
 Race.all.each do |race|
   race.destroy!
 end
 
-race_list.each do |name|
-  Race.create name: name
-end
-
 Klass.all.each do |klass|
   klass.destroy!
-end
-
-klass_list.each do |name|
-  Klass.create name: name
 end
 
 Skill.all.each do |skill|
   skill.destroy!
 end
 
-skill_list.each do |skill|
-  Skill.create name: skill[0], description: skill[1], bound_attribute: skill[2], skill_type: 0
+puts 'Create Races...'
+
+race_list.each do |name|
+  Race.create name: name
 end
 
+puts 'Create Classes...'
+
+klass_list.each do |name|
+  Klass.create name: name
+end
+
+puts 'Create Common Skills...'
+
+skill_list.each do |skill|
+  Skill.create name: skill[0], description: skill[1], bound_attribute: skill[2], skill_type: :common
+end
+
+puts 'Create Spells...'
+
 spells_list.each do |spell|
-  Skill.create name: spell[0], description: spell[1], bound_attribute: spell[2], skill_type: 2, klass_id: spell[3]
+  Skill.create name: spell[0], description: spell[1], bound_attribute: spell[2], skill_type: :spell, klass_id: spell[3]
 end
 
 =begin
