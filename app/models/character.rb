@@ -1,6 +1,6 @@
 class Character < ApplicationRecord
   belongs_to :race
-  belongs_to :klass
+  belongs_to :klass # TODO: Refactor to enum
   has_and_belongs_to_many :skills
 	validates :name, presence: true,
 		length: { minimum: 2 }
