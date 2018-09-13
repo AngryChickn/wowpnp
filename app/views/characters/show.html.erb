@@ -24,8 +24,9 @@
 <br>
 <br><h2>Fertigkeiten</h2>
 <% @character.skills.each do |skill| %>
-  <% dices = @character.calcDices skill %>
-  <br><%= skill.name %> | 
+  <% dices = @character.calcDices skill %><br>
+  <%= skill.name %> | 
+  <%= skill.skill_type.capitalize() %> | 
   <% dices[0].times do %> 
     <span style="color: green">◆</span>
   <% end %> |
