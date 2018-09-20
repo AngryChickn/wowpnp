@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180913071740) do
+ActiveRecord::Schema.define(version: 20180920073930) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
@@ -52,6 +52,37 @@ ActiveRecord::Schema.define(version: 20180913071740) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "npcs", force: :cascade do |t|
+    t.string "name"
+    t.integer "level", default: 0
+    t.integer "hitpoints", default: 10
+    t.integer "stamina", default: 10
+    t.integer "mana", default: 0
+    t.integer "armor", default: 0
+    t.integer "resistence", default: 0
+    t.integer "strength", default: 1
+    t.integer "agility", default: 1
+    t.integer "intellect", default: 1
+    t.integer "cunning", default: 1
+    t.integer "willpower", default: 1
+    t.integer "presence", default: 1
+    t.integer "race_id"
+    t.integer "klass_id"
+    t.text "notice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "npcs_skills", id: false, force: :cascade do |t|
+    t.integer "npc_id", null: false
+    t.integer "skill_id", null: false
+    t.integer "id"
+    t.integer "primary_key"
+    t.integer "level", default: 0
+    t.index ["npc_id", "skill_id"], name: "index_npcs_skills_on_npc_id_and_skill_id"
+    t.index ["skill_id", "npc_id"], name: "index_npcs_skills_on_skill_id_and_npc_id"
   end
 
   create_table "races", force: :cascade do |t|

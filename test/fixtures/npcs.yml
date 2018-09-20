@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  level: 1
+  hitpoints: 1
+  stamina: 1
+  mana: 1
+  armor: 1
+  resistence: 1
+  strength: 1
+  agility: 1
+  intellect: 1
+  cunning: 1
+  willpower: 1
+  presence: 1
+  race_id: 1
+  klass_id: 1
+  notice: MyText
+
+two:
+  name: MyString
+  level: 1
+  hitpoints: 1
+  stamina: 1
+  mana: 1
+  armor: 1
+  resistence: 1
+  strength: 1
+  agility: 1
+  intellect: 1
+  cunning: 1
+  willpower: 1
+  presence: 1
+  race_id: 1
+  klass_id: 1
+  notice: MyText

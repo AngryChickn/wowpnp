@@ -1,0 +1,106 @@
+<%= form_with(model: npc, local: true) do |form| %>
+  <% if npc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(npc.errors.count, "error") %> prohibited this npc from being saved:</h2>
+
+      <ul>
+      <% npc.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% skills = Skill.all %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :npc_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :level %>
+    <%= form.number_field :level, id: :npc_level %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hitpoints %>
+    <%= form.number_field :hitpoints, id: :npc_hitpoints %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stamina %>
+    <%= form.number_field :stamina, id: :npc_stamina %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mana %>
+    <%= form.number_field :mana, id: :npc_mana %>
+  </div>
+
+  <div class="field">
+    <%= form.label :armor %>
+    <%= form.number_field :armor, id: :npc_armor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :resistence %>
+    <%= form.number_field :resistence, id: :npc_resistence %>
+  </div>
+
+  <div class="field">
+    <%= form.label :strength %>
+    <%= form.number_field :strength, id: :npc_strength %>
+  </div>
+
+  <div class="field">
+    <%= form.label :agility %>
+    <%= form.number_field :agility, id: :npc_agility %>
+  </div>
+
+  <div class="field">
+    <%= form.label :intellect %>
+    <%= form.number_field :intellect, id: :npc_intellect %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cunning %>
+    <%= form.number_field :cunning, id: :npc_cunning %>
+  </div>
+
+  <div class="field">
+    <%= form.label :willpower %>
+    <%= form.number_field :willpower, id: :npc_willpower %>
+  </div>
+
+  <div class="field">
+    <%= form.label :presence %>
+    <%= form.number_field :presence, id: :npc_presence %>
+  </div>
+
+  <div class="field">
+    <%= form.label :race_id %>
+    <%= form.number_field :race_id, id: :npc_race_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :klass_id %>
+    <%= form.number_field :klass_id, id: :npc_klass_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notice %>
+    <%= form.text_area :notice, id: :npc_notice %>
+  </div>
+
+  <div class="field">
+    <select multiple>
+    <% skills.each do |skill| %>
+      <option value='<%= skill.id %>'><%= skill.name %></option>
+    <% end %>
+    </select>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

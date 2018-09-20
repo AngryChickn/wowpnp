@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @npc.name %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @npc.level %>
+</p>
+
+<p>
+  <strong>Hitpoints:</strong>
+  <%= @npc.hitpoints %>
+</p>
+
+<p>
+  <strong>Stamina:</strong>
+  <%= @npc.stamina %>
+</p>
+
+<p>
+  <strong>Mana:</strong>
+  <%= @npc.mana %>
+</p>
+
+<p>
+  <strong>Armor:</strong>
+  <%= @npc.armor %>
+</p>
+
+<p>
+  <strong>Resistence:</strong>
+  <%= @npc.resistence %>
+</p>
+
+<p>
+  <strong>Strength:</strong>
+  <%= @npc.strength %>
+</p>
+
+<p>
+  <strong>Agility:</strong>
+  <%= @npc.agility %>
+</p>
+
+<p>
+  <strong>intellect:</strong>
+  <%= @npc.intellect %>
+</p>
+
+<p>
+  <strong>Cunning:</strong>
+  <%= @npc.cunning %>
+</p>
+
+<p>
+  <strong>Willpower:</strong>
+  <%= @npc.willpower %>
+</p>
+
+<p>
+  <strong>Presence:</strong>
+  <%= @npc.presence %>
+</p>
+
+<p>
+  <strong>Race:</strong>
+  <%= @npc.race.name %>
+</p>
+
+<p>
+  <strong>Klass:</strong>
+  <%= @npc.klass && @npc.klass.name %>
+</p>
+
+<p>
+  <strong>Notice:</strong>
+  <%= @npc.notice %>
+</p>
+
+<%= link_to 'Edit', edit_npc_path(@npc) %> |
+<%= link_to 'Back', npcs_path %>
