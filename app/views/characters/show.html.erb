@@ -1,6 +1,5 @@
 <br><%= link_to 'Zurück', characters_path %>
-<br><% @character = Character.find(params[:id])  %>
-
+<%= link_to 'Aufsteigen', edit_character_path(@character) %>
 <h1><%= @character.name %></h1>
 <br>Rasse: <%= @character.race.name %>
 <br>Klasse: <%= @character.klass.name %>
