@@ -520,10 +520,10 @@
 	"buffers":
 	[
 		{
-			"contents": "\n  BRANCH:  On branch `develop` tracking `origin/develop`.\n  ROOT:    ~/workspace/wowpnp\n  HEAD:    8807d00 Adds :exp to characters\n\n  STAGED:\n    app/assets/javascripts/npcs.coffee\n    app/assets/stylesheets/npcs.scss\n    app/assets/stylesheets/scaffolds.scss\n    app/controllers/npcs_controller.rb\n    app/helpers/npcs_helper.rb\n    app/models/npc.rb\n    app/views/npcs/_form.html.erb\n    app/views/npcs/_npc.json.jbuilder\n    app/views/npcs/edit.html.erb\n    app/views/npcs/index.html.erb\n    app/views/npcs/index.json.jbuilder\n    app/views/npcs/new.html.erb\n    app/views/npcs/show.html.erb\n    app/views/npcs/show.json.jbuilder\n    config/routes.rb\n    db/migrate/20180920073930_create_npcs.rb\n    db/schema.rb\n    test/controllers/npcs_controller_test.rb\n    test/fixtures/npcs.yml\n    test/models/npc_test.rb\n    test/system/npcs_test.rb\n    wowpnp.sublime-workspace\n\n  ###################                   ###############\n  ## SELECTED FILE ##                   ## ALL FILES ##\n  ###################                   ###############\n\n  [o] open file                         [a] stage all unstaged files\n  [s] stage file                        [A] stage all unstaged and untracked files\n  [u] unstage file                      [U] unstage all staged files\n  [d] discard changes to file           [D] discard all unstaged changes\n  [h] open file on remote\n  [M] launch external merge tool\n\n  [l] diff file inline                  [f] diff all files\n  [e] diff file                         [F] diff all cached files\n\n  #############                         #############\n  ## ACTIONS ##                         ## STASHES ##\n  #############                         #############\n\n  [c] commit                            [t][a] apply stash\n  [C] commit, including unstaged        [t][p] pop stash\n  [m] amend previous commit             [t][s] show stash\n  [p] push current branch               [t][c] create stash\n                                        [t][u] create stash including untracked files\n  [i] ignore file                       [t][g] create stash of staged changes only\n  [I] ignore pattern                    [t][d] drop stash\n\n  [B] abort merge\n\n  ###########\n  ## OTHER ##\n  ###########\n\n  [r]         refresh status\n  [?]         toggle this help menu\n  [tab]       transition to next dashboard\n  [SHIFT-tab] transition to previous dashboard\n  [.]         move cursor to next file\n  [,]         move cursor to previous file\n\n-\n\n",
+			"contents": "\n  BRANCH:  On branch `develop` tracking `origin/develop`.\n           You're ahead by 2.\n  ROOT:    ~/workspace/wowpnp\n  HEAD:    b1f851a Adds a link to NPCs to character index.\n\n    Your working directory is clean.\n\n  ###################                   ###############\n  ## SELECTED FILE ##                   ## ALL FILES ##\n  ###################                   ###############\n\n  [o] open file                         [a] stage all unstaged files\n  [s] stage file                        [A] stage all unstaged and untracked files\n  [u] unstage file                      [U] unstage all staged files\n  [d] discard changes to file           [D] discard all unstaged changes\n  [h] open file on remote\n  [M] launch external merge tool\n\n  [l] diff file inline                  [f] diff all files\n  [e] diff file                         [F] diff all cached files\n\n  #############                         #############\n  ## ACTIONS ##                         ## STASHES ##\n  #############                         #############\n\n  [c] commit                            [t][a] apply stash\n  [C] commit, including unstaged        [t][p] pop stash\n  [m] amend previous commit             [t][s] show stash\n  [p] push current branch               [t][c] create stash\n                                        [t][u] create stash including untracked files\n  [i] ignore file                       [t][g] create stash of staged changes only\n  [I] ignore pattern                    [t][d] drop stash\n\n  [B] abort merge\n\n  ###########\n  ## OTHER ##\n  ###########\n\n  [r]         refresh status\n  [?]         toggle this help menu\n  [tab]       transition to next dashboard\n  [SHIFT-tab] transition to previous dashboard\n  [.]         move cursor to next file\n  [,]         move cursor to previous file\n\n-\n\n",
 			"settings":
 			{
-				"buffer_size": 2453,
+				"buffer_size": 1794,
 				"line_ending": "Unix",
 				"name": "STATUS: wowpnp",
 				"read_only": true,
@@ -531,14 +531,12 @@
 			}
 		},
 		{
-			"contents": " app/controllers/npcs_controller.rb       |  2 +-\n app/models/npc.rb                        |  4 ++--\n app/views/npcs/_form.html.erb            |  4 ++--\n app/views/npcs/_npc.json.jbuilder        |  2 +-\n app/views/npcs/show.html.erb             |  4 ++--\n config/routes.rb                         |  1 +\n db/schema.rb                             | 33 +++++++++++++++++++++++++++++++-\n test/controllers/npcs_controller_test.rb |  4 ++--\n test/fixtures/npcs.yml                   |  4 ++--\n 9 files changed, 45 insertions(+), 13 deletions(-)\n\ndiff --git a/app/controllers/npcs_controller.rb b/app/controllers/npcs_controller.rb\nindex 1adb100..9952491 100644\n--- a/app/controllers/npcs_controller.rb\n+++ b/app/controllers/npcs_controller.rb\n@@ -69,6 +69,6 @@ class NpcsController < ApplicationController\n \n     # Never trust parameters from the scary internet, only allow the white list through.\n     def npc_params\n-      params.require(:npc).permit(:name, :level, :hitpoints, :stamina, :mana, :armor, :resistence, :strength, :agility, :intelect, :cunning, :willpower, :presence, :race_id, :klass_id, :notice)\n+      params.require(:npc).permit(:name, :level, :hitpoints, :stamina, :mana, :armor, :resistence, :strength, :agility, :intellect, :cunning, :willpower, :presence, :race_id, :klass_id, :notice)\n     end\n end\ndiff --git a/app/models/npc.rb b/app/models/npc.rb\nindex 35affab..e5f5ca5 100644\n--- a/app/models/npc.rb\n+++ b/app/models/npc.rb\n@@ -1,6 +1,6 @@\n class Npc < ApplicationRecord\n-  belongs_to :race, :optional\n-  belongs_to :klass, :optional # TODO: Refactor to enum\n+  belongs_to :race, optional: true\n+  belongs_to :klass, optional: true # TODO: Refactor to enum\n   has_and_belongs_to_many :skills\n   validates :name, presence: true,\n     length: { minimum: 2 }\ndiff --git a/app/views/npcs/_form.html.erb b/app/views/npcs/_form.html.erb\nindex c565c92..60cde63 100644\n--- a/app/views/npcs/_form.html.erb\n+++ b/app/views/npcs/_form.html.erb\n@@ -58,8 +58,8 @@\n   </div>\n \n   <div class=\"field\">\n-    <%= form.label :intelect %>\n-    <%= form.number_field :intelect, id: :npc_intelect %>\n+    <%= form.label :intellect %>\n+    <%= form.number_field :intellect, id: :npc_intellect %>\n   </div>\n \n   <div class=\"field\">\ndiff --git a/app/views/npcs/_npc.json.jbuilder b/app/views/npcs/_npc.json.jbuilder\nindex a44255c..a534bfa 100644\n--- a/app/views/npcs/_npc.json.jbuilder\n+++ b/app/views/npcs/_npc.json.jbuilder\n@@ -1,2 +1,2 @@\n-json.extract! npc, :id, :name, :level, :hitpoints, :stamina, :mana, :armor, :resistence, :strength, :agility, :intelect, :cunning, :willpower, :presence, :race_id, :klass_id, :notice, :created_at, :updated_at\n+json.extract! npc, :id, :name, :level, :hitpoints, :stamina, :mana, :armor, :resistence, :strength, :agility, :intellect, :cunning, :willpower, :presence, :race_id, :klass_id, :notice, :created_at, :updated_at\n json.url npc_url(npc, format: :json)\ndiff --git a/app/views/npcs/show.html.erb b/app/views/npcs/show.html.erb\nindex 3f21b8d..0cbc82d 100644\n--- a/app/views/npcs/show.html.erb\n+++ b/app/views/npcs/show.html.erb\n@@ -46,8 +46,8 @@\n </p>\n \n <p>\n-  <strong>Intelect:</strong>\n-  <%= @npc.intelect %>\n+  <strong>intellect:</strong>\n+  <%= @npc.intellect %>\n </p>\n \n <p>\ndiff --git a/config/routes.rb b/config/routes.rb\nindex 06d3cbb..c837244 100644\n--- a/config/routes.rb\n+++ b/config/routes.rb\n@@ -1,4 +1,5 @@\n Rails.application.routes.draw do\n+  resources :npcs\n   get 'characters/show'\n \n   post 'characters/create'\ndiff --git a/db/schema.rb b/db/schema.rb\nindex aae37f7..6b45487 100644\n--- a/db/schema.rb\n+++ b/db/schema.rb\n@@ -10,7 +10,7 @@\n #\n # It's strongly recommended that you check this file into your version control system.\n \n-ActiveRecord::Schema.define(version: 20180913071740) do\n+ActiveRecord::Schema.define(version: 20180920073930) do\n \n   create_table \"characters\", force: :cascade do |t|\n     t.string \"name\"\n@@ -54,6 +54,37 @@ ActiveRecord::Schema.define(version: 20180913071740) do\n     t.datetime \"updated_at\", null: false\n   end\n \n+  create_table \"npcs\", force: :cascade do |t|\n+    t.string \"name\"\n+    t.integer \"level\", default: 0\n+    t.integer \"hitpoints\", default: 10\n+    t.integer \"stamina\", default: 10\n+    t.integer \"mana\", default: 0\n+    t.integer \"armor\", default: 0\n+    t.integer \"resistence\", default: 0\n+    t.integer \"strength\", default: 1\n+    t.integer \"agility\", default: 1\n+    t.integer \"intellect\", default: 1\n+    t.integer \"cunning\", default: 1\n+    t.integer \"willpower\", default: 1\n+    t.integer \"presence\", default: 1\n+    t.integer \"race_id\"\n+    t.integer \"klass_id\"\n+    t.text \"notice\"\n+    t.datetime \"created_at\", null: false\n+    t.datetime \"updated_at\", null: false\n+  end\n+\n+  create_table \"npcs_skills\", id: false, force: :cascade do |t|\n+    t.integer \"npc_id\", null: false\n+    t.integer \"skill_id\", null: false\n+    t.integer \"id\"\n+    t.integer \"primary_key\"\n+    t.integer \"level\", default: 0\n+    t.index [\"npc_id\", \"skill_id\"], name: \"index_npcs_skills_on_npc_id_and_skill_id\"\n+    t.index [\"skill_id\", \"npc_id\"], name: \"index_npcs_skills_on_skill_id_and_npc_id\"\n+  end\n+\n   create_table \"races\", force: :cascade do |t|\n     t.string \"name\"\n     t.datetime \"created_at\", null: false\ndiff --git a/test/controllers/npcs_controller_test.rb b/test/controllers/npcs_controller_test.rb\nindex 547c421..4a80fd1 100644\n--- a/test/controllers/npcs_controller_test.rb\n+++ b/test/controllers/npcs_controller_test.rb\n@@ -17,7 +17,7 @@ class NpcsControllerTest < ActionDispatch::IntegrationTest\n \n   test \"should create npc\" do\n     assert_difference('Npc.count') do\n-      post npcs_url, params: { npc: { agility: @npc.agility, armor: @npc.armor, cunning: @npc.cunning, hitpoints: @npc.hitpoints, intelect: @npc.intelect, klass_id: @npc.klass_id, level: @npc.level, mana: @npc.mana, name: @npc.name, notice: @npc.notice, presence: @npc.presence, race_id: @npc.race_id, resistence: @npc.resistence, stamina: @npc.stamina, strength: @npc.strength, willpower: @npc.willpower } }\n+      post npcs_url, params: { npc: { agility: @npc.agility, armor: @npc.armor, cunning: @npc.cunning, hitpoints: @npc.hitpoints, intellect: @npc.intellect, klass_id: @npc.klass_id, level: @npc.level, mana: @npc.mana, name: @npc.name, notice: @npc.notice, presence: @npc.presence, race_id: @npc.race_id, resistence: @npc.resistence, stamina: @npc.stamina, strength: @npc.strength, willpower: @npc.willpower } }\n     end\n \n     assert_redirected_to npc_url(Npc.last)\n@@ -34,7 +34,7 @@ class NpcsControllerTest < ActionDispatch::IntegrationTest\n   end\n \n   test \"should update npc\" do\n-    patch npc_url(@npc), params: { npc: { agility: @npc.agility, armor: @npc.armor, cunning: @npc.cunning, hitpoints: @npc.hitpoints, intelect: @npc.intelect, klass_id: @npc.klass_id, level: @npc.level, mana: @npc.mana, name: @npc.name, notice: @npc.notice, presence: @npc.presence, race_id: @npc.race_id, resistence: @npc.resistence, stamina: @npc.stamina, strength: @npc.strength, willpower: @npc.willpower } }\n+    patch npc_url(@npc), params: { npc: { agility: @npc.agility, armor: @npc.armor, cunning: @npc.cunning, hitpoints: @npc.hitpoints, intellect: @npc.intellect, klass_id: @npc.klass_id, level: @npc.level, mana: @npc.mana, name: @npc.name, notice: @npc.notice, presence: @npc.presence, race_id: @npc.race_id, resistence: @npc.resistence, stamina: @npc.stamina, strength: @npc.strength, willpower: @npc.willpower } }\n     assert_redirected_to npc_url(@npc)\n   end\n \ndiff --git a/test/fixtures/npcs.yml b/test/fixtures/npcs.yml\nindex f808174..00fdf56 100644\n--- a/test/fixtures/npcs.yml\n+++ b/test/fixtures/npcs.yml\n@@ -10,7 +10,7 @@ one:\n   resistence: 1\n   strength: 1\n   agility: 1\n-  intelect: 1\n+  intellect: 1\n   cunning: 1\n   willpower: 1\n   presence: 1\n@@ -28,7 +28,7 @@ two:\n   resistence: 1\n   strength: 1\n   agility: 1\n-  intelect: 1\n+  intellect: 1\n   cunning: 1\n   willpower: 1\n   presence: 1\n",
+			"file": "app/views/npcs/_form.html.erb",
 			"settings":
 			{
-				"buffer_size": 7894,
-				"line_ending": "Unix",
-				"name": "DIFF: wowpnp",
-				"read_only": true,
-				"scratch": true
+				"buffer_size": 2535,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -550,112 +548,19 @@
 			}
 		},
 		{
-			"file": "app/models/npc.rb",
+			"file": "app/views/characters/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 389,
+				"buffer_size": 249,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 320 files for \"intelect\"\n\n/home/kevin/workspace/wowpnp/app/controllers/npcs_controller.rb:\n   70      # Never trust parameters from the scary internet, only allow the white list through.\n   71      def npc_params\n   72:       params.require(:npc).permit(:name, :level, :hitpoints, :stamina, :mana, :armor, :resistence, :strength, :agility, :intelect, :cunning, :willpower, :presence, :race_id, :klass_id, :notice)\n   73      end\n   74  end\n\n/home/kevin/workspace/wowpnp/app/views/npcs/_form.html.erb:\n   59  \n   60    <div class=\"field\">\n   61:     <%= form.label :intelect %>\n   62:     <%= form.number_field :intelect, id: :npc_intelect %>\n   63    </div>\n   64  \n\n/home/kevin/workspace/wowpnp/app/views/npcs/_npc.json.jbuilder:\n    1: json.extract! npc, :id, :name, :level, :hitpoints, :stamina, :mana, :armor, :resistence, :strength, :agility, :intelect, :cunning, :willpower, :presence, :race_id, :klass_id, :notice, :created_at, :updated_at\n    2  json.url npc_url(npc, format: :json)\n    3  \n\n/home/kevin/workspace/wowpnp/app/views/npcs/show.html.erb:\n   47  \n   48  <p>\n   49:   <strong>Intelect:</strong>\n   50:   <%= @npc.intelect %>\n   51  </p>\n   52  \n\n/home/kevin/workspace/wowpnp/log/development.log:\n    <binary>\n\n/home/kevin/workspace/wowpnp/test/controllers/npcs_controller_test.rb:\n   18    test \"should create npc\" do\n   19      assert_difference('Npc.count') do\n   20:       post npcs_url, params: { npc: { agility: @npc.agility, armor: @npc.armor, cunning: @npc.cunning, hitpoints: @npc.hitpoints, intelect: @npc.intelect, klass_id: @npc.klass_id, level: @npc.level, mana: @npc.mana, name: @npc.name, notice: @npc.notice, presence: @npc.presence, race_id: @npc.race_id, resistence: @npc.resistence, stamina: @npc.stamina, strength: @npc.strength, willpower: @npc.willpower } }\n   21      end\n   22  \n   ..\n   35  \n   36    test \"should update npc\" do\n   37:     patch npc_url(@npc), params: { npc: { agility: @npc.agility, armor: @npc.armor, cunning: @npc.cunning, hitpoints: @npc.hitpoints, intelect: @npc.intelect, klass_id: @npc.klass_id, level: @npc.level, mana: @npc.mana, name: @npc.name, notice: @npc.notice, presence: @npc.presence, race_id: @npc.race_id, resistence: @npc.resistence, stamina: @npc.stamina, strength: @npc.strength, willpower: @npc.willpower } }\n   38      assert_redirected_to npc_url(@npc)\n   39    end\n\n/home/kevin/workspace/wowpnp/test/fixtures/npcs.yml:\n   11    strength: 1\n   12    agility: 1\n   13:   intelect: 1\n   14    cunning: 1\n   15    willpower: 1\n   ..\n   29    strength: 1\n   30    agility: 1\n   31:   intelect: 1\n   32    cunning: 1\n   33    willpower: 1\n\n15 matches across 7 files\n\n\nSearching 320 files for \"intelect\"\n\n/home/kevin/workspace/wowpnp/app/controllers/npcs_controller.rb:\n   70      # Never trust parameters from the scary internet, only allow the white list through.\n   71      def npc_params\n   72:       params.require(:npc).permit(:name, :level, :hitpoints, :stamina, :mana, :armor, :resistence, :strength, :agility, :intelect, :cunning, :willpower, :presence, :race_id, :klass_id, :notice)\n   73      end\n   74  end\n\n/home/kevin/workspace/wowpnp/app/views/npcs/_form.html.erb:\n   59  \n   60    <div class=\"field\">\n   61:     <%= form.label :intelect %>\n   62:     <%= form.number_field :intelect, id: :npc_intelect %>\n   63    </div>\n   64  \n\n/home/kevin/workspace/wowpnp/app/views/npcs/_npc.json.jbuilder:\n    1: json.extract! npc, :id, :name, :level, :hitpoints, :stamina, :mana, :armor, :resistence, :strength, :agility, :intelect, :cunning, :willpower, :presence, :race_id, :klass_id, :notice, :created_at, :updated_at\n    2  json.url npc_url(npc, format: :json)\n    3  \n\n/home/kevin/workspace/wowpnp/app/views/npcs/show.html.erb:\n   47  \n   48  <p>\n   49:   <strong>Intelect:</strong>\n   50:   <%= @npc.intelect %>\n   51  </p>\n   52  \n\n/home/kevin/workspace/wowpnp/log/development.log:\n    <binary>\n\n/home/kevin/workspace/wowpnp/test/controllers/npcs_controller_test.rb:\n   18    test \"should create npc\" do\n   19      assert_difference('Npc.count') do\n   20:       post npcs_url, params: { npc: { agility: @npc.agility, armor: @npc.armor, cunning: @npc.cunning, hitpoints: @npc.hitpoints, intelect: @npc.intelect, klass_id: @npc.klass_id, level: @npc.level, mana: @npc.mana, name: @npc.name, notice: @npc.notice, presence: @npc.presence, race_id: @npc.race_id, resistence: @npc.resistence, stamina: @npc.stamina, strength: @npc.strength, willpower: @npc.willpower } }\n   21      end\n   22  \n   ..\n   35  \n   36    test \"should update npc\" do\n   37:     patch npc_url(@npc), params: { npc: { agility: @npc.agility, armor: @npc.armor, cunning: @npc.cunning, hitpoints: @npc.hitpoints, intelect: @npc.intelect, klass_id: @npc.klass_id, level: @npc.level, mana: @npc.mana, name: @npc.name, notice: @npc.notice, presence: @npc.presence, race_id: @npc.race_id, resistence: @npc.resistence, stamina: @npc.stamina, strength: @npc.strength, willpower: @npc.willpower } }\n   38      assert_redirected_to npc_url(@npc)\n   39    end\n\n/home/kevin/workspace/wowpnp/test/fixtures/npcs.yml:\n   11    strength: 1\n   12    agility: 1\n   13:   intelect: 1\n   14    cunning: 1\n   15    willpower: 1\n   ..\n   29    strength: 1\n   30    agility: 1\n   31:   intelect: 1\n   32    cunning: 1\n   33    willpower: 1\n\n15 matches across 7 files\n",
+			"file": "app/views/npcs/new.html.erb",
 			"settings":
 			{
-				"buffer_size": 5314,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "app/controllers/npcs_controller.rb",
-			"settings":
-			{
-				"buffer_size": 1886,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/npcs/_form.html.erb",
-			"settings":
-			{
-				"buffer_size": 2719,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/npcs/_npc.json.jbuilder",
-			"settings":
-			{
-				"buffer_size": 247,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/npcs/show.html.erb",
-			"settings":
-			{
-				"buffer_size": 1086,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Package Control Messages\n========================\n\nGitGutter\n---------\n\n  1.9.4:\n  \n    Fix:\n     - avoid line height shifting by displaying annotations (#518)\n  \n  \n  💛 Git Gutter? Want to support development?\n  \n  I've teamed up with Wes Bos to offer the following discounts:\n  \n  +------------------------------------------------+\n  |                                                |\n  |   Use the coupon code GITGUTTER for $10 off    |\n  |                                                |\n  +------------------------------------------------+\n  \n  🏅 ⭐ ES6 ⭐\n  \n  👉 ES6.io/friend/GITGUTTER\n  \n  🏅 ⭐ Sublime Text Book ⭐\n  \n  👉 SublimeTextBook.com/friend/GITGUTTER\n  \n  🏅 ⭐ React For Beginners ⭐\n  \n  👉 ReactForBeginners.com/friend/GITGUTTER\n  \n  \n  Join 15,000 other developers already learning with Wes Bos.\n  \n  These are fantastic resources - 100% money back guarantee! 🌟\n",
-			"settings":
-			{
-				"buffer_size": 876,
-				"line_ending": "Unix",
-				"name": "Package Control Messages",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"file": "log/development.log",
-			"settings":
-			{
-				"buffer_size": 1697351,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "test/controllers/npcs_controller_test.rb",
-			"settings":
-			{
-				"buffer_size": 1646,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "test/fixtures/npcs.yml",
-			"settings":
-			{
-				"buffer_size": 543,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "db/migrate/20180920073930_create_npcs.rb",
-			"settings":
-			{
-				"buffer_size": 903,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/models/character.rb",
-			"settings":
-			{
-				"buffer_size": 4047,
-				"encoding": "UTF-8",
+				"buffer_size": 84,
 				"line_ending": "Unix"
 			}
 		}
@@ -915,6 +820,7 @@
 		"/home/kevin/workspace/wowpnp/app/views",
 		"/home/kevin/workspace/wowpnp/app/views/characters",
 		"/home/kevin/workspace/wowpnp/app/views/enemies",
+		"/home/kevin/workspace/wowpnp/app/views/layouts",
 		"/home/kevin/workspace/wowpnp/app/views/np_cs",
 		"/home/kevin/workspace/wowpnp/app/views/npcs",
 		"/home/kevin/workspace/wowpnp/db",
@@ -922,17 +828,22 @@
 	],
 	"file_history":
 	[
+		"/home/kevin/workspace/wowpnp/config/routes.rb",
+		"/home/kevin/workspace/wowpnp/app/models/npc.rb",
 		"/home/kevin/workspace/wowpnp/app/controllers/npcs_controller.rb",
-		"/home/kevin/workspace/wowpnp/app/views/npcs/_npc.json.jbuilder",
-		"/home/kevin/workspace/wowpnp/app/views/enemies/_form.html.erb",
 		"/home/kevin/workspace/wowpnp/app/views/npcs/_form.html.erb",
+		"/home/kevin/workspace/wowpnp/app/views/npcs/_npc.json.jbuilder",
+		"/home/kevin/workspace/wowpnp/app/views/npcs/show.html.erb",
+		"/home/kevin/workspace/wowpnp/log/development.log",
+		"/home/kevin/workspace/wowpnp/test/controllers/npcs_controller_test.rb",
+		"/home/kevin/workspace/wowpnp/test/fixtures/npcs.yml",
+		"/home/kevin/workspace/wowpnp/app/models/character.rb",
+		"/home/kevin/workspace/wowpnp/app/views/enemies/_form.html.erb",
 		"/home/kevin/workspace/wowpnp/app/views/npcs/index.html.erb",
 		"/home/kevin/workspace/wowpnp/db/migrate/20180914070256_create_enemies.rb",
 		"/home/kevin/workspace/wowpnp/db/schema.rb",
-		"/home/kevin/workspace/wowpnp/app/models/npc.rb",
 		"/home/kevin/workspace/wowpnp/db/migrate/20180920073930_create_npcs.rb",
 		"/home/kevin/workspace/wowpnp/db/migrate/20180920073419_create_npcs.rb",
-		"/home/kevin/workspace/wowpnp/config/routes.rb",
 		"/home/kevin/workspace/wowpnp/app/models/enemy.rb",
 		"/home/kevin/workspace/wowpnp/app/helpers/enemies_helper.rb",
 		"/home/kevin/workspace/wowpnp/app/controllers/np_cs_controller.rb",
@@ -944,7 +855,6 @@
 		"/home/kevin/workspace/wowpnp/app/views/enemies/show.html.erb",
 		"/home/kevin/workspace/wowpnp/app/controllers/characters_controller.rb",
 		"/home/kevin/workspace/wowpnp/db/migrate/20180913071740_add_exp_points_to_character.rb",
-		"/home/kevin/workspace/wowpnp/app/models/character.rb",
 		"/home/kevin/workspace/wowpnp/app/models/skill.rb",
 		"/home/kevin/workspace/wowpnp/app/views/enemies/",
 		"/home/kevin/workspace/wowpnp/db/migrate/20180906071157_create_join_table_characters_skills.rb",
@@ -1045,11 +955,7 @@
 		"/home/kevin/workspace/lokalportal/react-portal/src/components/forms/checkbox/checkbox.scss",
 		"/home/kevin/workspace/lokalportal/react-portal/src/components/settings/settings_wizard/steps/reactions.tsx",
 		"/home/kevin/workspace/lokalportal/react-portal/src/components/settings/settings_wizard/steps/newsletter.tsx",
-		"/home/kevin/workspace/lokalportal/react-portal/src/api/decoders/category.ts",
-		"/home/kevin/workspace/ilearn/start.sh",
-		"/home/kevin/workspace/ilearn/config/database_dokku.yaml",
-		"/home/kevin/workspace/ilearn/config/database.yml",
-		"/home/kevin/workspace/ilearn/Dockerfile_for_compose"
+		"/home/kevin/workspace/lokalportal/react-portal/src/api/decoders/category.ts"
 	],
 	"find":
 	{
@@ -1132,7 +1038,7 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1140,15 +1046,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2453,
+						"buffer_size": 1794,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								151,
-								151
+								402,
+								402
 							]
 						],
 						"settings":
@@ -1167,45 +1073,39 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "app/views/npcs/_form.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7894,
+						"buffer_size": 2535,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5283,
-								5283
+								2467,
+								2467
 							]
 						],
 						"settings":
 						{
-							"git_gutter_is_enabled": false,
-							"git_savvy.diff_view": true,
-							"git_savvy.diff_view.base_commit": null,
-							"git_savvy.diff_view.disable_stage": false,
-							"git_savvy.diff_view.ignore_whitespace": false,
-							"git_savvy.diff_view.in_cached_mode": false,
-							"git_savvy.diff_view.show_diffstat": true,
-							"git_savvy.diff_view.show_word_diff": false,
-							"git_savvy.diff_view.target_commit": null,
-							"git_savvy.file_path": null,
+							"git_gutter_is_enabled": true,
 							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/GitSavvy/syntax/diff.sublime-syntax"
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1215.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1221,8 +1121,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								306,
+								306
 							]
 						],
 						"settings":
@@ -1235,479 +1135,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "app/models/npc.rb",
+					"file": "app/views/characters/index.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 389,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								242,
-								242
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5314,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										351,
-										359
-									],
-									[
-										575,
-										583
-									],
-									[
-										621,
-										629
-									],
-									[
-										640,
-										648
-									],
-									[
-										859,
-										867
-									],
-									[
-										1105,
-										1113
-									],
-									[
-										1142,
-										1150
-									],
-									[
-										1529,
-										1537
-									],
-									[
-										1544,
-										1552
-									],
-									[
-										2023,
-										2031
-									],
-									[
-										2038,
-										2046
-									],
-									[
-										2465,
-										2473
-									],
-									[
-										2575,
-										2583
-									],
-									[
-										3009,
-										3017
-									],
-									[
-										3233,
-										3241
-									],
-									[
-										3279,
-										3287
-									],
-									[
-										3298,
-										3306
-									],
-									[
-										3517,
-										3525
-									],
-									[
-										3763,
-										3771
-									],
-									[
-										3800,
-										3808
-									],
-									[
-										4187,
-										4195
-									],
-									[
-										4202,
-										4210
-									],
-									[
-										4681,
-										4689
-									],
-									[
-										4696,
-										4704
-									],
-									[
-										5123,
-										5131
-									],
-									[
-										5233,
-										5241
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								2658,
-								2658
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"git_gutter_is_enabled": false,
-							"line_numbers": false,
-							"output_tag": 2,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1005.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/controllers/npcs_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1886,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/views/npcs/_form.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2719,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/views/npcs/_npc.json.jbuilder",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 247,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/views/npcs/show.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1086,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								940,
-								940
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 876,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								314,
-								315
-							]
-						],
-						"settings":
-						{
-							"auto_indent": false,
-							"git_gutter_is_enabled": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_width": 2,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "log/development.log",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1697351,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "test/controllers/npcs_controller_test.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1646,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "test/fixtures/npcs.yml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 543,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/YAML/YAML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "db/migrate/20180920073930_create_npcs.rb",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 903,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"git_gutter_is_enabled": true,
-							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "app/models/character.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4047,
+						"buffer_size": 249,
 						"regions":
 						{
 						},
@@ -1722,15 +1159,43 @@
 						{
 							"git_gutter_is_enabled": true,
 							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
-							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/npcs/new.html.erb",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 84,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"git_savvy.repo_path": "/home/kevin/workspace/wowpnp",
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1812,6 +1277,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"routes",
+				"config/routes.rb"
+			],
 			[
 				"npc",
 				"app/models/npc.rb"
@@ -2175,10 +1644,6 @@
 			[
 				"app.",
 				"app/assets/stylesheets/namespaced/_app.scss"
-			],
-			[
-				"routes",
-				"app/assets/components/shared/config/routes.config.coffee"
 			],
 			[
 				"contain sett",
