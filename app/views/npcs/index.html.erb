@@ -18,7 +18,7 @@
         <td><%= link_to npc.name, npc %></td>
         <td><%= npc.level %></td>
         <td><%= npc.race_id || '?' %></td>
-        <td><%= link_to 'Edit', edit_npc_path(npc) %></td>
+        <td><%= link_to 'Bearbeiten', edit_npc_path(npc) %></td>
         <td><%= link_to 'Exterminate!', npc, method: :delete, data: { confirm: 'You sure?' } %></td>
       </tr>
     <% end %>
