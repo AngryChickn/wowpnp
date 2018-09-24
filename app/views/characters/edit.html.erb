@@ -1,0 +1,42 @@
+<%= link_to 'Zurück', @character %>
+<br><h1>Aufsteigen</h1>
+
+<%= form_for @character, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+  <h1><%= @character.name %></h1>
+  <br>Rasse: <%= @character.race.name %>
+  <br>Klasse: <%= @character.klass.name %>
+  <br>Level: <%= @character.level %> | Exp: <%= @character.exp %>
+  <br>
+  <br><h2>Ressourcen</h2>
+  <br>Leben: <%= @character.hitpoints %>
+  <br>Energie: <%= @character.stamina %>
+  <br>Mana: <%= @character.mana %>
+  <br><h2>Verteidigung</h2>
+  <br>Rüstung: <%= @character.armor %>
+  <br>Widerstand: <%= @character.resistence %>
+  <br>
+  <br><h2>Attribute</h2>
+  <br>Stärke: <%= @character.strength %>
+  <br>Beweglichkeit: <%= @character.agility %>
+  <br>Intelligenz: <%= @character.intellect %>
+  <br>Täuschung: <%= @character.cunning %>
+  <br>Willenskraft: <%= @character.willpower %>
+  <br>Ausstrahlung: <%= @character.presence %>
+  <br>
+  <br><h2>Fertigkeiten</h2>
+  <% @character.skills.each do |skill| %>
+    <% dices = @character.calcDices skill %><br>
+    <%= skill.name %> | 
+    <%= skill.skill_type.capitalize() %> | 
+    <% dices[0].times do %> 
+      <span style="color: green">◆</span>
+    <% end %> |
+    <% dices[1].times do %> 
+      <span style="color: yellow">◆</span>
+    <% end %>
+  <% end %>
+  <br><%= f.submit "Bestätigen" %>
+<% end %>
+
+<%= link_to 'Show', @character %> |
+<%= link_to 'Back', characters_path %>
