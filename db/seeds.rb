@@ -135,6 +135,7 @@ Skill.all.each do |skill|
   skill.destroy!
 end
 
+# TODO: Make race and class enums
 puts 'Create Races...'
 
 race_list.each do |name|
@@ -149,14 +150,37 @@ end
 
 puts 'Create Common Skills...'
 
+# Takes params as array
+def generate_skills(params)
+  # 6 ranks for skills, since a characters max attribute can only be 6 ATM
+  6.times do |i|
+    Skill.create name: generate_skill_name(params[:name], i),
+                 bound_attribute: params[:bound_attribute],
+                 description: params[:descriptions][i],
+                 klass_id: params[:klass_id],
+                 skill_type: params[:skill_type]
+  end
+end
+
+def generate_skill_name(name, level)
+  "#{name} (Rang #{level})"
+end
+
 skill_list.each do |skill|
-  Skill.create name: skill[0], description: skill[1], bound_attribute: skill[2], skill_type: :common
+  generate_skills name: skill[0],
+                  bound_attribute: skill[2],
+                  descriptions: [skill[1], skill[1], skill[1], skill[1], skill[1], skill[1]],
+                  skill_type: :common
 end
 
 puts 'Create Spells...'
 
 spells_list.each do |spell|
-  Skill.create name: spell[0], description: spell[1], bound_attribute: spell[2], skill_type: :spell, klass_id: spell[3]
+  generate_skills name: spell[0],
+                  bound_attribute: spell[2],
+                  descriptions: [spell[1], spell[1], spell[1], spell[1], spell[1], spell[1]],
+                  klass_id: spell[3],
+                  skill_type: :common
 end
 
 =begin
